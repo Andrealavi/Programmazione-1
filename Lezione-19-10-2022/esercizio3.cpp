@@ -45,3 +45,6 @@ int main ()
     cout<<"La somma dei numeri inseriti è: "<<somma<<endl;
     cout<<"Il massimo dei numeri inseriti è: "<<massimo<<endl;
 }
+
+// Effettua il controllo su un possibile overflow
+// al posto della sommatoria bisogna fare la produttoria
