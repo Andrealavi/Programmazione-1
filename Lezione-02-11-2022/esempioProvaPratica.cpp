@@ -3,7 +3,7 @@ using namespace std;
 
 int main () 
 {
-    int scelta, numAnelli = 0, posizioneAnelloRame1 = -1, posizioneAnelloRame2 = -1;
+    int scelta, numAnelli = 0, numAnelliRame = 0, posizioneAnelloRame1 = -1, posizioneAnelloRame2 = -1;
 
     do {
 
@@ -27,38 +27,33 @@ int main ()
                 cout<<"Digitare la posizione in cui va inserito l'anello nella catena: ";
                 cin>>posizione;
 
-                if (posizione < 0 || posizione > numAnelli + 1 || (tipoAnello == 2 && (posizioneAnelloRame1 != -1 && posizioneAnelloRame2 != -1))) {
+                if (posizione < 0 || posizione > numAnelli + 1 || (tipoAnello == 2 && numAnelliRame == 2)) {
                     cout<<"Non è possibile aggiungere l'anello"<<endl;
                     break;
                 }
 
                 numAnelli++;
-                if (tipoAnello == 2 && (posizioneAnelloRame1 == -1 || posizioneAnelloRame2 == -1)) {
-                    if (posizioneAnelloRame1 == -1) {
+
+                if (posizioneAnelloRame1 >= posizione){
+                    posizioneAnelloRame1++;
+                }
+                if (posizioneAnelloRame2 >= posizione){
+                    posizioneAnelloRame2++;
+                }
+
+                if (tipoAnello == 2) {
+                    numAnelliRame++;
+                    if (posizioneAnelloRame1 == -1){
                         posizioneAnelloRame1 = posizione;
                     }
-                    else if (posizioneAnelloRame1 != -1 && posizioneAnelloRame1 >= posizione) {
-                        posizioneAnelloRame2 = posizione;
-                        posizioneAnelloRame1++;
-                    }
-                    else if (posizioneAnelloRame1 != -1 && posizioneAnelloRame1 <= posizione){
+                    else{
                         posizioneAnelloRame2 = posizione;
                     }
                 }
+
 
                 cout<<posizioneAnelloRame1<<" ";
                 cout<<posizioneAnelloRame2;
-
-                if (tipoAnello == 1 && posizione <= posizioneAnelloRame1 && posizione <= posizioneAnelloRame2){
-                    posizioneAnelloRame1++;
-                    posizioneAnelloRame2++;
-                }
-                if (tipoAnello == 1 && posizione <= posizioneAnelloRame1 && posizione > posizioneAnelloRame2){
-                    posizioneAnelloRame1++;
-                }
-                if (tipoAnello == 1 && posizione <= posizioneAnelloRame2 && posizione > posizioneAnelloRame1){
-                    posizioneAnelloRame2++;
-                }
                 cout<<"\n"<<endl;
 
                 break;
